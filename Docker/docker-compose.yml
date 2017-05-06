@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  artifactory:
+    build:
+      context: artifactory
+      dockerfile: ./Dockerfile
+    image: artifactory-demo
+    container_name: artifactory_server
+    ports:
+      - "8081:8081"
+#    volumes:
+#      - "${HOST_ARTIFACTORY_HOME}/logs:/var/opt/jfrog/artifactory/logs"
+  gitlab:
+    image: gitlab/gitlab-ce
+    ports:
+      - "8443:443"
+  jenkins:
+    image: jenkins
+    ports:
+      - "8080:8080"
+
+networks:
+  default:
+    external:
+      name: swampup
