@@ -14,7 +14,7 @@ services:
   gitlab:
     image: gitlab/gitlab-ce
     ports:
-      - "8443:443"
+      - "8082:80"
   jenkins:
     image: jenkins
     ports:
