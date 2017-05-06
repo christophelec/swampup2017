@@ -5,18 +5,26 @@ services:
     build:
       context: artifactory
       dockerfile: ./Dockerfile
-    image: artifactory-demo
-    container_name: artifactory_server
+    image: artifactory-swampup
+    container_name: artifactory-server
     ports:
       - "8081:8081"
 #    volumes:
 #      - "${HOST_ARTIFACTORY_HOME}/logs:/var/opt/jfrog/artifactory/logs"
   gitlab:
-    image: gitlab/gitlab-ce
+    build:
+      context: gitlab
+      dockerfile: ./Dockerfile
+    image: gitlab-swampup
+    container_name: gitlab-server
     ports:
       - "8082:80"
   jenkins:
-    image: jenkins
+    build:
+      context: jenkins
+      dockerfile: ./Dockerfile
+    image: jenkins-swampup
+    container_name: jenkins-server
     ports:
       - "8080:8080"
 
